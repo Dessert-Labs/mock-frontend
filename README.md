@@ -63,10 +63,10 @@ The Clafoutis consumer configuration is in `.clafoutis/consumer.json`:
   "repo": "Dessert-Labs/mock-design-system",
   "version": "latest",
   "files": {
-    "tailwind.base.js": "src/styles/tailwind.base.js",
-    "base.css": "src/styles/css/base.css",
-    "dark.css": "src/styles/css/dark.css",
-    "variables.json": "src/styles/figma-variables.json"
+    "tailwind.tailwind.base.js": "src/styles/tailwind.base.js",
+    "tailwind.base.css": "src/styles/css/base.css",
+    "tailwind.dark.css": "src/styles/css/dark.css",
+    "figma.variables.json": "src/styles/figma-variables.json"
   }
 }
 ```
