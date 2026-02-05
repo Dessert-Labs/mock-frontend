@@ -12,10 +12,10 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary:
     'bg-primary-500 text-white hover:bg-primary-600 focus:ring-2 focus:ring-primary-400 focus:ring-offset-2',
   secondary:
-    'bg-neutral-200 text-neutral-900 hover:bg-neutral-300 focus:ring-2 focus:ring-neutral-400',
+    'bg-neutral-200 text-neutral-900 hover:bg-neutral-300 dark:bg-neutral-700 dark:text-neutral-50 dark:hover:bg-neutral-600 focus:ring-2 focus:ring-neutral-400',
   outline:
-    'border border-neutral-300 bg-transparent text-neutral-900 hover:bg-neutral-100 focus:ring-2 focus:ring-primary-400',
-  ghost: 'bg-transparent text-neutral-900 hover:bg-neutral-100',
+    'border border-neutral-300 bg-transparent text-neutral-900 hover:bg-neutral-100 dark:border-neutral-600 dark:text-neutral-50 dark:hover:bg-neutral-800 focus:ring-2 focus:ring-primary-400',
+  ghost: 'bg-transparent text-neutral-900 hover:bg-neutral-100 dark:text-neutral-50 dark:hover:bg-neutral-800',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

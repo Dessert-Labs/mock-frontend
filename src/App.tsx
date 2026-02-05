@@ -1,9 +1,19 @@
-import { Button, Card, CardHeader, CardTitle, CardContent, ThemeToggle } from './components';
+import {
+  Alert,
+  Badge,
+  Button,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  Input,
+  ThemeToggle,
+} from './components';
 
 function App() {
   return (
     <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900 p-6 transition-colors">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
         <header className="flex items-center justify-between mb-8">
           <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-50">
@@ -18,8 +28,9 @@ function App() {
             Design System Demo
           </h2>
           <p className="text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto mb-6">
-            This is a simple Vite React app demonstrating how to consume design
-            tokens from the <strong>mock-design-system</strong> via Clafoutis.
+            This app demonstrates how to consume design tokens from{' '}
+            <strong>mock-design-system</strong> via Clafoutis and use them as
+            Tailwind utility classes.
           </p>
           <div className="flex gap-4 justify-center">
             <Button variant="primary">Get Started</Button>
@@ -27,147 +38,304 @@ function App() {
           </div>
         </section>
 
-        {/* Color Palette */}
-        <section className="mb-8">
+        {/* Color Palettes */}
+        <section className="mb-12">
           <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50 mb-4">
-            Color Palette
+            Color Palettes
           </h2>
-          <Card variant="bordered">
-            <CardHeader>
-              <CardTitle>Primary Colors</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex gap-2 flex-wrap">
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-md shadow-sm bg-primary-50" />
-                  <span className="text-xs text-neutral-500">50</span>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-md shadow-sm bg-primary-100" />
-                  <span className="text-xs text-neutral-500">100</span>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-md shadow-sm bg-primary-200" />
-                  <span className="text-xs text-neutral-500">200</span>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-md shadow-sm bg-primary-300" />
-                  <span className="text-xs text-neutral-500">300</span>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-md shadow-sm bg-primary-400" />
-                  <span className="text-xs text-neutral-500">400</span>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-md shadow-sm bg-primary-500" />
-                  <span className="text-xs text-neutral-500">500</span>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-md shadow-sm bg-primary-600" />
-                  <span className="text-xs text-neutral-500">600</span>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-md shadow-sm bg-primary-700" />
-                  <span className="text-xs text-neutral-500">700</span>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-md shadow-sm bg-primary-800" />
-                  <span className="text-xs text-neutral-500">800</span>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-md shadow-sm bg-primary-900" />
-                  <span className="text-xs text-neutral-500">900</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Components Section */}
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50 mb-4">
-            Components
-          </h2>
-
-          {/* Buttons */}
-          <Card variant="bordered" className="mb-4">
-            <CardHeader>
-              <CardTitle>Buttons</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-3">
-                <Button variant="primary" size="sm">Small</Button>
-                <Button variant="primary" size="md">Medium</Button>
-                <Button variant="primary" size="lg">Large</Button>
-              </div>
-              <div className="flex flex-wrap gap-3 mt-4">
-                <Button variant="primary">Primary</Button>
-                <Button variant="secondary">Secondary</Button>
-                <Button variant="outline">Outline</Button>
-                <Button variant="ghost">Ghost</Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Card variant="bordered">
               <CardHeader>
-                <CardTitle>Default Card</CardTitle>
+                <CardTitle>Primary Colors</CardTitle>
               </CardHeader>
               <CardContent>
-                This card uses the default shadow variant with design tokens
-                for colors and spacing.
+                <div className="flex gap-1 flex-wrap">
+                  {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map((shade) => (
+                    <div key={shade} className="text-center">
+                      <div
+                        className={`w-10 h-10 rounded shadow-sm bg-primary-${shade}`}
+                      />
+                      <span className="text-xs text-neutral-500">{shade}</span>
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
 
             <Card variant="bordered">
               <CardHeader>
-                <CardTitle>Bordered Card</CardTitle>
+                <CardTitle>Neutral Colors</CardTitle>
               </CardHeader>
               <CardContent>
-                This card uses the bordered variant with the neutral border color
-                from our design system.
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Status Colors</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex gap-2">
-                  <span className="px-2 py-1 rounded text-sm text-white bg-success-500">
-                    Success
-                  </span>
-                  <span className="px-2 py-1 rounded text-sm text-white bg-warning-500">
-                    Warning
-                  </span>
-                  <span className="px-2 py-1 rounded text-sm text-white bg-error-500">
-                    Error
-                  </span>
+                <div className="flex gap-1 flex-wrap">
+                  {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map((shade) => (
+                    <div key={shade} className="text-center">
+                      <div
+                        className={`w-10 h-10 rounded shadow-sm bg-neutral-${shade}`}
+                      />
+                      <span className="text-xs text-neutral-500">{shade}</span>
+                    </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
           </div>
         </section>
 
-        {/* Typography */}
-        <section className="mb-8">
+        {/* Spacing Scale */}
+        <section className="mb-12">
           <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50 mb-4">
-            Typography
+            Spacing Scale
           </h2>
           <Card variant="bordered">
             <CardContent>
-              <div className="space-y-2">
-                <p className="text-4xl font-bold">4xl - The quick brown fox</p>
-                <p className="text-3xl font-bold">3xl - The quick brown fox</p>
-                <p className="text-2xl font-semibold">2xl - The quick brown fox</p>
-                <p className="text-xl font-semibold">xl - The quick brown fox</p>
-                <p className="text-lg">lg - The quick brown fox jumps over the lazy dog</p>
-                <p className="text-base">base - The quick brown fox jumps over the lazy dog</p>
-                <p className="text-sm">sm - The quick brown fox jumps over the lazy dog</p>
-                <p className="text-xs">xs - The quick brown fox jumps over the lazy dog</p>
+              <div className="space-y-3">
+                {[
+                  { name: '1', value: '0.25rem' },
+                  { name: '2', value: '0.5rem' },
+                  { name: '3', value: '0.75rem' },
+                  { name: '4', value: '1rem' },
+                  { name: '5', value: '1.25rem' },
+                  { name: '6', value: '1.5rem' },
+                  { name: '8', value: '2rem' },
+                  { name: '10', value: '2.5rem' },
+                  { name: '12', value: '3rem' },
+                ].map(({ name, value }) => (
+                  <div key={name} className="flex items-center gap-4">
+                    <span className="w-8 text-sm font-mono text-neutral-500">{name}</span>
+                    <div
+                      className={`h-4 bg-primary-500 rounded w-${name}`}
+                      style={{ width: value }}
+                    />
+                    <span className="text-xs text-neutral-400">{value}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Typography */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50 mb-4">
+            Typography
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Card variant="bordered">
+              <CardHeader>
+                <CardTitle>Font Sizes</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  <p className="text-4xl">4xl - Display</p>
+                  <p className="text-3xl">3xl - Heading 1</p>
+                  <p className="text-2xl">2xl - Heading 2</p>
+                  <p className="text-xl">xl - Heading 3</p>
+                  <p className="text-lg">lg - Lead text</p>
+                  <p className="text-base">base - Body text</p>
+                  <p className="text-sm">sm - Small text</p>
+                  <p className="text-xs">xs - Caption text</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card variant="bordered">
+              <CardHeader>
+                <CardTitle>Font Weights</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2 text-lg">
+                  <p className="font-normal">Normal (400) - Regular text</p>
+                  <p className="font-medium">Medium (500) - Slightly bold</p>
+                  <p className="font-semibold">Semibold (600) - Emphasis</p>
+                  <p className="font-bold">Bold (700) - Strong emphasis</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card variant="bordered">
+              <CardHeader>
+                <CardTitle>Font Families</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-xs text-neutral-500 mb-1">font-sans</p>
+                    <p className="font-sans text-lg">The quick brown fox jumps over the lazy dog</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-neutral-500 mb-1">font-serif</p>
+                    <p className="font-serif text-lg">The quick brown fox jumps over the lazy dog</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-neutral-500 mb-1">font-mono</p>
+                    <p className="font-mono text-lg">The quick brown fox jumps over</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card variant="bordered">
+              <CardHeader>
+                <CardTitle>Line Heights</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-xs text-neutral-500 mb-1">leading-tight (1.25)</p>
+                    <p className="leading-tight text-sm bg-neutral-100 dark:bg-neutral-800 p-2 rounded">
+                      This paragraph has tight line height. Lorem ipsum dolor sit amet,
+                      consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-neutral-500 mb-1">leading-normal (1.5)</p>
+                    <p className="leading-normal text-sm bg-neutral-100 dark:bg-neutral-800 p-2 rounded">
+                      This paragraph has normal line height. Lorem ipsum dolor sit amet,
+                      consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-neutral-500 mb-1">leading-relaxed (1.75)</p>
+                    <p className="leading-relaxed text-sm bg-neutral-100 dark:bg-neutral-800 p-2 rounded">
+                      This paragraph has relaxed line height. Lorem ipsum dolor sit amet,
+                      consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Components */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50 mb-4">
+            Components
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Buttons */}
+            <Card variant="bordered">
+              <CardHeader>
+                <CardTitle>Buttons</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex flex-wrap gap-2">
+                    <Button variant="primary" size="sm">Small</Button>
+                    <Button variant="primary" size="md">Medium</Button>
+                    <Button variant="primary" size="lg">Large</Button>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <Button variant="primary">Primary</Button>
+                    <Button variant="secondary">Secondary</Button>
+                    <Button variant="outline">Outline</Button>
+                    <Button variant="ghost">Ghost</Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Badges */}
+            <Card variant="bordered">
+              <CardHeader>
+                <CardTitle>Badges</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="default">Default</Badge>
+                  <Badge variant="primary">Primary</Badge>
+                  <Badge variant="success">Success</Badge>
+                  <Badge variant="warning">Warning</Badge>
+                  <Badge variant="error">Error</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Inputs */}
+            <Card variant="bordered">
+              <CardHeader>
+                <CardTitle>Inputs</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <Input label="Email" placeholder="you@example.com" type="email" />
+                  <Input
+                    label="Password"
+                    placeholder="Enter password"
+                    type="password"
+                    error="Password is required"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Cards */}
+            <Card variant="bordered">
+              <CardHeader>
+                <CardTitle>Card Variants</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="p-3 bg-white dark:bg-neutral-800 rounded-md shadow">
+                    <p className="text-sm font-medium">Default (shadow)</p>
+                    <p className="text-xs text-neutral-500">With drop shadow</p>
+                  </div>
+                  <div className="p-3 border border-neutral-200 dark:border-neutral-700 rounded-md">
+                    <p className="text-sm font-medium">Bordered</p>
+                    <p className="text-xs text-neutral-500">With border</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Alerts */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50 mb-4">
+            Alerts
+          </h2>
+          <div className="space-y-3">
+            <Alert variant="info" title="Information">
+              This is an informational alert using primary colors.
+            </Alert>
+            <Alert variant="success" title="Success">
+              Your changes have been saved successfully.
+            </Alert>
+            <Alert variant="warning" title="Warning">
+              Please review your input before proceeding.
+            </Alert>
+            <Alert variant="error" title="Error">
+              Something went wrong. Please try again.
+            </Alert>
+          </div>
+        </section>
+
+        {/* Status Colors */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50 mb-4">
+            Status Colors
+          </h2>
+          <Card variant="bordered">
+            <CardContent>
+              <div className="flex gap-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-lg bg-success-500 mb-2" />
+                  <p className="text-sm font-medium">Success</p>
+                  <p className="text-xs text-neutral-500">#22c55e</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-lg bg-warning-500 mb-2" />
+                  <p className="text-sm font-medium">Warning</p>
+                  <p className="text-xs text-neutral-500">#f59e0b</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-lg bg-error-500 mb-2" />
+                  <p className="text-sm font-medium">Error</p>
+                  <p className="text-xs text-neutral-500">#ef4444</p>
+                </div>
               </div>
             </CardContent>
           </Card>
